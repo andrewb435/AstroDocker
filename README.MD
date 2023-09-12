@@ -14,12 +14,12 @@ net.AllowEncryption=False
 This has only ever been tested by building and launching with docker compose locally.
 
 ### First launch ###
-The first launch will download components to build the container, download AstroLauncher, generate some basic config file entries based on ENV, and download the actual AstroServer files. I recommend running it interactively first time to better monitor progress.
+The first launch will download components to build the container, download AstroLauncher, generate some basic config file entries based on ENV, and download the actual AstroServer files. I recommend running it interactively first time to better monitor progress, as the process can take a few minutes depending on your CPU and internet connection.
 ```
 docker compose up
 ```
 ### Regular launches ###
-After the built container has been cached on your machine, you should be able to run normally with a detached compose
+After the built container has been cached on your machine, you should be able to run normally with a detached compose.
 ```
 docker compose up -d
 ```
@@ -27,8 +27,8 @@ docker compose up -d
 ## Environment Variables ##
 | Variable | Default | Description |
 | ----------- | ----------- | ----------- |
-| UID | Optional: 1000 | This is the user id that the processes inside the container will run as |
-| GID | Optional: 1000 | This is the group id that the processes inside the container will run as |
+| UID | Optional: 1000 | This is the user id that the processes inside the container will run as (and the files on disk will be chown'd to)|
+| GID | Optional: 1000 | This is the group id that the processes inside the container will run as (and the files on disk will be chown'd to)|
 | LAUNCHER_VER | Optional: 1.8.3.0 | Entrypoint will download the version specified here, or fall back to 1.8.3.0 if none is specified |
 | SERVER_NAME | Optional: Astroneer Dedicated Server | Server name that is published |
 | SERVER_PASS | Optional: password | Server password if you want a private server |
