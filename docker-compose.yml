@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  astroneer:
+    stdin_open: true
+    tty: true
+    container_name: astroneer
+    build:
+        context: ./docker
+    environment:
+      - UID=1000
+      - GID=1000
+      - LAUNCHER_VER=1.8.3.0
+      - SERVER_NAME="Astroneer Dedicated Server"
+      - SERVER_PASS=
+      - SERVER_PORT=7777
+      - OWNER_NAME=
+      - OWNER_GUID=
+    volumes:
+      - './server:/astroneer:rw'
+      - './config:/astroneer/Astro/Saved:rw'
+    ports:
+      - '7777:7777/udp'
+      - '5000:5000/tcp'
